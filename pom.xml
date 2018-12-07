@@ -22,7 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<docker.image.prefix>kongkong/spring-boot-docker-demo</docker.image.prefix>
+		<docker.image.prefix>kongkong</docker.image.prefix>
 		<dockerfile-maven-version>1.4.9</dockerfile-maven-version>
 	</properties>
 
@@ -50,31 +50,10 @@
 				<groupId>com.spotify</groupId>
 				<artifactId>dockerfile-maven-plugin</artifactId>
 				<version>${dockerfile-maven-version}</version>
-				<executions>
-					<execution>
-						<id>default</id>
-						<goals>
-							<goal>build</goal>
-							<goal>push</goal>
-						</goals>
-					</execution>
-				</executions>
 				<configuration>
 					<repository>${docker.image.prefix}/${project.artifactId}</repository>
-					<tag>${project.version}</tag>
-					<buildArgs>
-						<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
-					</buildArgs>
 				</configuration>
 			</plugin>
-			<!--<plugin>-->
-				<!--<groupId>com.spotify</groupId>-->
-				<!--<artifactId>dockerfile-maven-plugin</artifactId>-->
-				<!--<version>${dockerfile-maven-version}</version>-->
-				<!--<configuration>-->
-					<!--<repository>${docker.image.prefix}/${project.artifactId}</repository>-->
-				<!--</configuration>-->
-			<!--</plugin>-->
 			<!-- Docker maven plugin -->
 		</plugins>
 	</build>
